@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Français quotidien | Apprendre le français</title>
+
+<style>
+:root {
+  --green: #DCEDE5;
+  --dark: #386A55;
+  --cream: #FFF8E8;
+  --peach: #F3D8C7;
+  --white: #FFFFFF;
+  --text: #294638;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #F8FBF9;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+header {
+  background: var(--green);
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.logo {
+  color: var(--dark);
+  font-size: 23px;
+  font-weight: bold;
+}
+
+nav a {
+  color: var(--dark);
+  text-decoration: none;
+  margin-left: 18px;
+  font-weight: bold;
+}
+
+nav a:hover { text-decoration: underline; }
+
+.hero {
+  text-align: center;
+  padding: 75px 20px;
+  background: var(--green);
+}
+
+.hero h1 {
+  color: var(--dark);
+  font-size: clamp(32px, 5vw, 48px);
+  margin-bottom: 15px;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: auto;
+  font-size: 18px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--dark);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 22px;
+  font-size: 15px;
+}
+
+.btn:hover { opacity: .85; }
+
+section {
+  padding: 55px 7%;
+}
+
+.section-title {
+  text-align: center;
+  color: var(--dark);
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 4px 15px #0000000c;
+  border: 1px solid var(--green);
+  transition: transform .2s;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+.card .emoji { font-size: 48px; }
+
+.card h3 {
+  color: var(--dark);
+  margin: 10px 0;
+}
+
+.card p { font-size: 14px; }
+
+.lesson {
+  background: var(--cream);
+  border-radius: 18px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.lesson h3 {
+  color: var(--dark);
+  margin-bottom: 12px;
+}
+
+.quiz {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+  max-width: 650px;
+  margin: auto;
+  box-shadow: 0 4px 15px #0000000c;
+}
+
+.quiz button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  background: var(--green);
+  color: var(--text);
+  border: 1px solid #c5ded1;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 15px;
+}
+
+.quiz button:hover { background: var(--peach); }
+
+#result {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.chat {
+  max-width: 650px;
+  margin: auto;
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 4px 15px #0000000c;
+}
+
+.chat-window {
+  background: #F8FBF9;
+  border-radius: 12px;
+  padding: 15px;
+  height: 230px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+
+.message {
+  padding: 10px 13px;
+  border-radius: 12px;
+  margin: 8px 0;
+  max-width: 90%;
+  white-space: pre-wrap;
+}
+
+.bot {
+  background: var(--green);
+  margin-right: auto;
+}
+
+.student {
+  background: var(--peach);
+  margin-left: auto;
+}
+
+.chat-input {
+  display: flex;
+  gap: 8px;
+}
+
+.chat-input input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.chat-input button {
+  background: var(--dark);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  cursor: pointer;
+}
+
+footer {
+  background: var(--green);
+  color: var(--dark);
+  text-align: center;
+  padding: 25px;
+}
+
+@media(max-width:600px) {
+  header { justify-content: center; text-align: center; }
+  nav a { margin: 5px; display: inline-block; }
+  section { padding: 40px 5%; }
+  .chat-input { flex-wrap: wrap; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🌿 Français quotidien</div>
+  <nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#lecons">Leçons</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#assistant">Assistant IA</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="accueil">
+  <h1>Bienvenue sur Français quotidien !</h1>
+  <p>Apprends le français chaque jour avec des leçons,
+  des jeux et des exercices amusants.</p>
+  <a href="#lecons" class="btn">Commencer à apprendre</a>
+</section>
+
+<section id="lecons">
+  <h2 class="section-title"> Mes quatre leçons</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="emoji"></div>
+      <h3>Se présenter</h3>
+      <p>Apprends à dire ton nom, ton âge et ta nationalité.</p>
+      <a href="#presentation" class="btn">Découvrir</a>
+    </div>
+
+    <div class="card">
+      <div class="emoji"></div>
+      <h3>Les loisirs</h3>
+      <p>Parle de tes activités et de tes passions.</p>
+      <a href="#loisirs" class="btn">Découvrir</a>
+    </div>
+
+    <div class="card">
+      <div class="emoji"></div>
+      <h3>L'heure</h3>
+      <p>Apprends à lire et à dire l'heure en français.</p>
+      <a href="#heure" class="btn">Découvrir</a>
+    </div>
+
+    <div class="card">
+      <div class="emoji"></div>
+      <h3>Les nombres</h3>
+      <p>Découvre les nombres de 0 à 100.</p>
+      <a href="#nombres" class="btn">Découvrir</a>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title"> Mes petites leçons</h2>
+
+  <div class="lesson" id="presentation">
+    <h3>� Leçon 1 : Se présenter</h3>
+    <p>Bonjour ! Je m'appelle Lina.</p>
+    <p>J'ai 10 ans.</p>
+    <p>Je suis cambodgienne.</p>
+    <p>J'habite à Phnom Penh.</p>
+    <p><strong>À retenir :</strong> Je m'appelle / J'ai / Je suis / J'habite.</p>
+  </div>
+
+  <div class="lesson" id="loisirs">
+    <h3> Leçon 2 : Les loisirs</h3>
+    <p>J'aime jouer au football.</p>
+    <p>J'aime écouter de la musique.</p>
+    <p>Je n'aime pas danser.</p>
+    <p><strong>À retenir :</strong> J'aime + activité.</p>
+  </div>
+
+  <div class="lesson" id="heure">
+    <h3>Leçon 3 : L'heure</h3>
+    <p>Il est une heure.</p>
+    <p>Il est deux heures.</p>
+    <p>Il est midi.</p>
+    <p>Il est huit heures et demie.</p>
+    <p><strong>À retenir :</strong> Pour demander l'heure, on dit : Quelle heure est-il ?</p>
+  </div>
+
+  <div class="lesson" id="nombres">
+    <h3> Leçon 4 : Les nombres</h3>
+    <p>0 : zéro | 1 : un | 2 : deux | 3 : trois</p>
+    <p>4 : quatre | 5 : cinq | 6 : six</p>
+    <p>7 : sept | 8 : huit | 9 : neuf | 10 : dix</p>
+    <p><strong>À retenir :</strong> J'ai dix ans.</p>
+  </div>
+</section>
+
+<section id="quiz">
+  <h2 class="section-title"> Teste tes connaissances !</h2>
+
+  <div class="quiz">
+    <h3 id="question">Comment dit-on son nom en français ?</h3>
+    <div id="answers"></div>
+    <p id="result" aria-live="polite"></p>
+    <button class="btn" onclick="nextQuestion()">Question suivante</button>
+    <p id="score"></p>
+  </div>
+</section>
+
+<section id="assistant">
+  <h2 class="section-title"> Mon ami français</h2>
+
+  <div class="chat">
+    <p>Bonjour ! Je suis ton assistant de français.
+    Pose-moi une question sur tes leçons ! �</p>
+
+    <div class="chat-window" id="chatWindow" aria-live="polite">
+      <div class="message bot">
+        Bonjour ! Comment puis-je t'aider aujourd'hui ?
+      </div>
+    </div>
+
+    <div class="chat-input">
+      <input id="userInput" type="text"
+        placeholder="Écris ta question..."
+        onkeydown="if(event.key==='Enter') sendMessage()">
+      <button onclick="sendMessage()">Envoyer</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>🌿 Français quotidien | Apprendre avec plaisir !</p>
+  <p>Un site pédagogique pour les jeunes apprenants de FLE.</p>
+</footer>
+
+<script>
+// QUIZ INTERACTIF
+
+const questions = [
+  {
+    q: "Comment dit-on son nom ?",
+    a: ["Je m'appelle Lina.", "J'ai dix ans.", "Je suis content."],
+    correct: 0
+  },
+  {
+    q: "Quelle phrase exprime un loisir ?",
+    a: ["Il est midi.", "J'aime jouer au football.", "J'ai onze ans."],
+    correct: 1
+  },
+  {
+    q: "Comment demander l'heure ?",
+    a: ["Comment tu t'appelles ?", "Où habites-tu ?", "Quelle heure est-il ?"],
+    correct: 2
+  },
+  {
+    q: "Comment écrit-on le nombre 5 ?",
+    a: ["Trois", "Cinq", "Sept"],
+    correct: 1
+  }
+];
+
+let current = 0;
+let points = 0;
+let answered = false;
+
+function showQuestion() {
+  answered = false;
+  const q = questions[current];
+
+  document.getElementById("question").textContent =
+    q.q;
+
+  document.getElementById("result").textContent = "";
+
+  const answers = document.getElementById("answers");
+  answers.innerHTML = "";
+
+  q.a.forEach((answer, index) => {
+    const button = document.createElement("button");
+    button.textContent = answer;
+    button.onclick = () => checkAnswer(index);
+    answers.appendChild(button);
+  });
+
+  document.getElementById("score").textContent =
+    "Question " + (current + 1) + " sur " + questions.length;
+}
+
+function checkAnswer(index) {
+  if (answered) return;
+  answered = true;
+
+  if (index === questions[current].correct) {
+    points++;
+    document.getElementById("result").textContent =
+      "Bravo ! Très bonne réponse ! �";
+  } else {
+    document.getElementById("result").textContent =
+      "Essaie encore la prochaine fois ! �";
+  }
+}
+
+function nextQuestion() {
+  if (!answered) {
+    document.getElementById("result").textContent =
+      "Choisis d'abord une réponse !";
+    return;
+  }
+
+  current++;
+
+  if (current >= questions.length) {
+    document.getElementById("question").textContent =
+      "Quiz terminé !";
+    document.getElementById("answers").innerHTML = "";
+    document.getElementById("result").textContent =
+      "Ton résultat : " + points + " / " + questions.length +
+      " bonnes réponses. Bravo ! �";
+    document.getElementById("score").textContent =
+      "Tu peux actualiser la page pour recommencer.";
+    return;
+  }
+
+  showQuestion();
+}
+
+showQuestion();
+
+// ASSISTANT PEDAGOGIQUE DE DEMONSTRATION
+
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const message = input.value.trim();
+
+  if (!message) return;
+
+  addMessage(message, "student");
+  input.value = "";
+
+  const text = message.toLowerCase();
+  let reply = "Bonne question ! Peux-tu préciser ce que tu veux apprendre ? Je peux t'aider avec les présentations, les loisirs, l'heure et les nombres.";
+
+  if (text.includes("bonjour") || text.includes("salut")) {
+    reply = "Bonjour ! 😊 Comment tu t'appelles ?";
+  } else if (text.includes("présent") || text.includes("nom")) {
+    reply = "Pour te présenter, tu peux dire : Je m'appelle Lina. Quel est ton prénom ?";
+  } else if (text.includes("âge") || text.includes("ans")) {
+    reply = "Pour parler de ton âge, utilise le verbe avoir : J'ai 10 ans. Et toi ?";
+  } else if (text.includes("loisir") || text.includes("football") || text.includes("aime")) {
+    reply = "Pour parler de tes loisirs, utilise : J'aime + activité. Exemple : J'aime danser. Quel est ton loisir préféré ?";
+  } else if (text.includes("heure") || text.includes("midi")) {
+    reply = "Pour demander l'heure, dis : Quelle heure est-il ? Essaie de répondre : Il est huit heures.";
+  } else if (text.includes("nombre") || text.includes("chiffre")) {
+    reply = "Commençons ! 1 = un, 2 = deux, 3 = trois, 4 = quatre et 5 = cinq. Quel nombre veux-tu apprendre ?";
+  } else if (text.includes("merci")) {
+    reply = "Avec plaisir ! Continue à apprendre le français. Tu progresses très bien ! 🌟";
+  } else if (text.includes("aide") || text.includes("comprendre")) {
+    reply = "Bien sûr ! Lis la leçon correspondante et dis-moi quel mot ou quelle phrase tu ne comprends pas.";
+  }
+
+  setTimeout(() => addMessage(reply, "bot"), 400);
+}
+
+function addMessage(text, type) {
+  const windowChat = document.getElementById("chatWindow");
+  const div = document.createElement("div");
+
+  div.className = "message " + type;
+  div.textContent = text;
+
+  windowChat.appendChild(div);
+  windowChat.scrollTop = windowChat.scrollHeight;
+}
+</script>
+
+</body>
+</html>
